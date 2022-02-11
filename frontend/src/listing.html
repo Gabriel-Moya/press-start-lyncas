@@ -6,8 +6,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/dashboard.css">
-  <link rel="stylesheet" href="css/listing.css">
+  <link rel="stylesheet" href="./css/dashboard.css">
+  <link rel="stylesheet" href="./css/listing.css">
   <title>Listagem | Lyncas</title>
 </head>
 
@@ -58,13 +58,19 @@
 
       </div>
 
-      <div class="content">
+      <div id="content">
 
         <div class="table-header">
           <h2>Usuários</h2>
           <div class="search">
-            <input type="text" placeholder="Buscar usuários">
-            <button class="add-user">Adicionar</button>
+            <label for="search-user">
+              <i>
+                <ion-icon name="search-outline"></ion-icon>
+              </i>
+              <input id="search-user" type="text" placeholder="Buscar usuários">
+            </label>
+
+            <button onclick="location.href='register.html'" class="add-user">Adicionar</button>
           </div>
         </div>
 
@@ -101,328 +107,7 @@
             </tr>
           </thead>
 
-          <tbody>
-
-            <tr>
-              <td>
-                <div class="user">
-                  <img src="images/user-300x300.png" alt="Foto do usuário">
-                  <span>André Stanlley</span>
-                </div>
-              </td>
-              <td>(47) 99988-9988</td>
-              <td>usuario@lyncas.net</td>
-              <td>19/09/1998</td>
-              <td>
-                <span class="status-active">Ativo</span>
-              </td>
-              <td>
-                <div class="action-icons">
-                  <a href="">
-                    <i>
-                      <ion-icon name="create-outline"></ion-icon>
-                    </i>
-                  </a>
-                  <a href="">
-                    <i>
-                      <ion-icon name="trash-outline"></ion-icon>
-                    </i>
-                  </a>
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <div class="user">
-                  <img src="images/user-300x300.png" alt="Foto do usuário" class="">
-                  <span>Bruno Trindade</span>
-                </div>
-              </td>
-              <td>(47) 99988-9988</td>
-              <td>usuario@lyncas.net</td>
-              <td>19/09/1998</td>
-              <td>
-                <span class="status-active">Ativo</span>
-              </td>
-              <td>
-                <div class="action-icons">
-                  <a href="">
-                    <i>
-                      <ion-icon name="create-outline"></ion-icon>
-                    </i>
-                  </a>
-                  <a href="">
-                    <i>
-                      <ion-icon name="trash-outline"></ion-icon>
-                    </i>
-                  </a>
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <div class="user">
-                  <img src="images/user-300x300.png" alt="Foto do usuário">
-                  <span>Gabriel Marques Moya</span>
-                </div>
-              </td>
-              <td>(67) 99845-6580</td>
-              <td>gabriel.mm@lyncas.net</td>
-              <td>15/07/1996</td>
-              <td>
-                <span class="status-active">Ativo</span>
-              </td>
-              <td>
-                <div class="action-icons">
-                  <a href="">
-                    <i>
-                      <ion-icon name="create-outline"></ion-icon>
-                    </i>
-                  </a>
-                  <a href="">
-                    <i>
-                      <ion-icon name="trash-outline"></ion-icon>
-                    </i>
-                  </a>
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <div class="user">
-                  <img src="images/user-300x300.png" alt="Foto do usuário">
-                  <span>Gabriel Marques Moya</span>
-                </div>
-              </td>
-              <td>(67) 99845-6580</td>
-              <td>gabriel.mm@lyncas.net</td>
-              <td>15/07/1996</td>
-              <td>
-                <span class="status-inactive">Inativo</span>
-              </td>
-              <td>
-                <div class="action-icons">
-                  <a href="">
-                    <i>
-                      <ion-icon name="create-outline"></ion-icon>
-                    </i>
-                  </a>
-                  <a href="">
-                    <i>
-                      <ion-icon name="trash-outline"></ion-icon>
-                    </i>
-                  </a>
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <div class="user">
-                  <img src="images/user-300x300.png" alt="Foto do usuário">
-                  <span>Genara de Souza</span>
-                </div>
-              </td>
-              <td>(47) 99988-9988</td>
-              <td>usuario@lyncas.net</td>
-              <td>19/09/1998</td>
-              <td>
-                <span class="status-active">Ativo</span>
-              </td>
-              <td>
-                <div class="action-icons">
-                  <a href="">
-                    <i>
-                      <ion-icon name="create-outline"></ion-icon>
-                    </i>
-                  </a>
-                  <a href="">
-                    <i>
-                      <ion-icon name="trash-outline"></ion-icon>
-                    </i>
-                  </a>
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <div class="user">
-                  <img src="images/user-300x300.png" alt="Foto do usuário">
-                  <span>Henrique Carvalho</span>
-                </div>
-              </td>
-              <td>(47) 99988-9988</td>
-              <td>usuario@lyncas.net</td>
-              <td>19/09/1998</td>
-              <td>
-                <span class="status-active">Ativo</span>
-              </td>
-              <td>
-                <div class="action-icons">
-                  <a href="">
-                    <i>
-                      <ion-icon name="create-outline"></ion-icon>
-                    </i>
-                  </a>
-                  <a href="">
-                    <i>
-                      <ion-icon name="trash-outline"></ion-icon>
-                    </i>
-                  </a>
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <div class="user">
-                  <img src="images/user-300x300.png" alt="Foto do usuário">
-                  <span>Laila Santos</span>
-                </div>
-              </td>
-              <td>(47) 99988-9988</td>
-              <td>usuario@lyncas.net</td>
-              <td>19/09/1998</td>
-              <td>
-                <span class="status-active">Ativo</span>
-              </td>
-              <td>
-                <div class="action-icons">
-                  <a href="">
-                    <i>
-                      <ion-icon name="create-outline"></ion-icon>
-                    </i>
-                  </a>
-                  <a href="">
-                    <i>
-                      <ion-icon name="trash-outline"></ion-icon>
-                    </i>
-                  </a>
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <div class="user">
-                  <img src="images/user-300x300.png" alt="Foto do usuário">
-                  <span>Mauricio Costa</span>
-                </div>
-              </td>
-              <td>(47) 99988-9988</td>
-              <td>usuario@lyncas.net</td>
-              <td>19/09/1998</td>
-              <td>
-                <span class="status-active">Ativo</span>
-              </td>
-              <td>
-                <div class="action-icons">
-                  <a href="">
-                    <i>
-                      <ion-icon name="create-outline"></ion-icon>
-                    </i>
-                  </a>
-                  <a href="">
-                    <i>
-                      <ion-icon name="trash-outline"></ion-icon>
-                    </i>
-                  </a>
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <div class="user">
-                  <img src="images/user-300x300.png" alt="Foto do usuário">
-                  <span>Renato Ganske</span>
-                </div>
-              </td>
-              <td>(47) 99988-9988</td>
-              <td>usuario@lyncas.net</td>
-              <td>19/09/1998</td>
-              <td>
-                <span class="status-active">Ativo</span>
-              </td>
-              <td>
-                <div class="action-icons">
-                  <a href="">
-                    <i>
-                      <ion-icon name="create-outline"></ion-icon>
-                    </i>
-                  </a>
-                  <a href="">
-                    <i>
-                      <ion-icon name="trash-outline"></ion-icon>
-                    </i>
-                  </a>
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <div class="user">
-                  <img src="images/user-300x300.png" alt="Foto do usuário">
-                  <span>Thalisson Monteiro</span>
-                </div>
-              </td>
-              <td>(47) 99988-9988</td>
-              <td>usuario@lyncas.net</td>
-              <td>19/09/1998</td>
-              <td>
-                <span class="status-active">Ativo</span>
-              </td>
-              <td>
-                <div class="action-icons">
-                  <a href="">
-                    <i>
-                      <ion-icon name="create-outline"></ion-icon>
-                    </i>
-                  </a>
-                  <a href="">
-                    <i>
-                      <ion-icon name="trash-outline"></ion-icon>
-                    </i>
-                  </a>
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <div class="user">
-                  <img src="images/user-300x300.png" alt="Foto do usuário">
-                  <span>Vanessa Eich</span>
-                </div>
-              </td>
-              <td>(47) 99988-9988</td>
-              <td>usuario@lyncas.net</td>
-              <td>19/09/1998</td>
-              <td>
-                <span class="status-active">Ativo</span>
-              </td>
-              <td>
-                <div class="action-icons">
-                  <a href="">
-                    <i>
-                      <ion-icon name="create-outline"></ion-icon>
-                    </i>
-                  </a>
-                  <a href="">
-                    <i>
-                      <ion-icon name="trash-outline"></ion-icon>
-                    </i>
-                  </a>
-                </div>
-              </td>
-            </tr>
-
-          </tbody>
+          <tbody id="table-body"></tbody>
 
         </table>
 
@@ -434,6 +119,7 @@
 
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="./javascript/listing.js"></script>
 </body>
 
 </html>

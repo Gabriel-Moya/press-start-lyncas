@@ -10,11 +10,41 @@
   box-sizing: border-box;
 }
 
-.search input[type=text] {
-  padding: 15px 200px 15px 15px;
-  border: 1px solid #090e24;
+.search {
+  display: flex;
+  width: 50%;
+  flex-direction: row;
+  align-items: center;
+}
+
+textarea:focus, input:focus {
+  box-shadow: 0 0 0 0;
+  outline: 0;
+}
+
+label {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 5px 0;
+  width: 100%;
+  border: 1px solid #000;
   border-radius: 5px;
   margin-right: 10px;
+}
+
+.search ion-icon {
+  font-size: 20px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+label:focus-within {
+  border: 1px solid rgb(100, 100, 100);
+}
+
+.search input[type="text"] {
+  width: 100%;
 }
 
 button {
@@ -38,7 +68,7 @@ button:hover {
   font-size: 0.9em;
   width: calc(100% - 60px);
   color: #757f98;
-  -webkit-border-vertical-spacing: 20px;
+  -webkit-border-vertical-spacing: 10px;
   -webkit-border-horizontal-spacing: 0;
 }
 
@@ -51,7 +81,7 @@ button:hover {
 .content-table td {
   align-items: center;
   font-size: 16px;
-  padding: 20px;
+  padding: 15px;
   border: none;
 }
 
@@ -92,6 +122,6 @@ td {
   margin-right: 20px;
 }
 
-.content {
+#content {
   overflow: auto;
 }

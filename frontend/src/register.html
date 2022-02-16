@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/register.css">
+  <title>Cadastro de usuários | Lyncas</title>
+</head>
+
+<body>
+
+  <div id="container-main">
+
+    <header class="sidebar">
+
+      <div class="logo">
+        <img src="images/Logo_Fundo_Transparente_Branca.png" alt="Logo branca Lyncas">
+      </div>
+
+      <nav class="nav">
+
+        <div class="nav-list">
+          <a href="#" class="nav-link">
+            <ion-icon name="grid-outline" class="nav-icon"></ion-icon>
+            <span class="nav-name">Dashboard</span>
+            <ion-icon name="chevron-forward-outline" class="active-indicator"></ion-icon>
+          </a>
+          <a href="#" class="nav-link">
+            <ion-icon name="wallet-outline" class="nav-icon"></ion-icon>
+            <span class="nav-name">Usuários</span>
+          </a>
+        </div>
+
+      </nav>
+
+    </header>
+
+    <div class="container">
+
+      <div class="topbar">
+
+        <ion-icon name="reorder-three-outline" class="icon-topbar"></ion-icon>
+
+        <div class="user">
+
+          <img src="images/user-300x300.png" alt="Foto do usuário">
+
+          <div class="user-information">
+            <p>Gabriel Moya</p>
+            <a href="#">Sair</a>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div id="content">
+        <div class="title">
+          <h2>Usuários / Cadastrar</h2>
+        </div>
+
+        <div class="register">
+
+          <form action="">
+
+            <fieldset>
+              <div class="fields">
+                <label for="name">Nome</label>
+                <input type="text" name="name" id="name" required>
+              </div>
+
+              <div class="fields">
+                <label for="lastname">Sobrenome</label>
+                <input type="text" name="lastname" id="lastname" required>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <div class="fields">
+                <label for="phonenumber">Telefone</label>
+                <input type="text" name="phonenumber" id="phonenumber" placeholder="(99) 99999-9999" maxlength="15" required>
+              </div>
+
+              <div class="fields">
+                <label for="birthday">Data de Nascimento</label>
+                <input type="date" name="birthday" id="birthday" required>
+              </div>
+            </fieldset>
+
+            <div class="fields">
+              <label for="email">Email</label>
+              <input type="email" name="email" id="email" required>
+            </div>
+
+            <fieldset>
+              <div class="fields">
+                <label for="password">Senha</label>
+                <input type="password" name="password" id="password" required>
+              </div class="fields">
+
+              <div class="fields">
+                <label for="retypePassword">Repetir senha</label>
+                <input type="password" name="retypePassword" id="retypePassword" required>
+              </div>
+            </fieldset>
+
+            <div class="active">
+              <input type="checkbox" name="active" id="active">Ativo
+            </div>
+
+            <button type="submit" name="submit">Cadastrar</button>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="javascript/register.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+.title {
+  padding: 0 30px;
+  width: calc(100% - 60px);
+  display: flex;
+  justify-content: flex-start;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+.register {
+  width: calc(100% - 60px);
+  padding: 30px;
+}
+
+fieldset {
+  display: flex;
+}
+
+.fields {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.fields label {
+  font-size: large;
+  margin-bottom: 5px;
+}
+
+.fields input {
+  height: 3rem;
+  border-radius: 5px;
+  border: 1px solid #bac1ca;
+  margin-right: 15px;
+  padding: 0 10px;
+}
+
+.active {
+  display: flex;
+  align-items: center;
+  font-size: large;
+  margin-bottom: 30px;
+}
+
+.active input {
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+}
+
+button {
+  color: white;
+  font-size: 18px;
+  font-weight: 300;
+  background-color: #3d2864;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  transition: 0.5s;
+  opacity: 0.9;
+}
+
+
+
+
+/* ERROR OR SUCCESS */
+.error {
+  color:	#FF8C00;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.success {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  border-radius: 5px;
+  border: 2px solid #00FF00;
+  background-color: rgba(0, 255, 0, 0.5);
+  color: #3d2864;
+  font-size: 21px;
+  margin-top: 30px;
+}

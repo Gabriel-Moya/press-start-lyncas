@@ -123,7 +123,7 @@ function validateEmail(email) {
 function validatePasswords(password, retypePassword) {
   const regEx = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[0-9])[0-9a-zA-Z$*&23]{6,}/;
   const blankFieldMessage = "Campo obrigatório";
-  const incorrrectPasswordMessage = "Requisitos mínimos: 6 caracteres e pelo menos um número";
+  const incorrrectPasswordMessage = "Requisitos mínimos: 6 caracteres com pelo menos uma letra e um número";
   const retypePasswordMessage = "Senhas não combinam"
 
   if(regEx.test(password.value) && (password.value === retypePassword.value)) {

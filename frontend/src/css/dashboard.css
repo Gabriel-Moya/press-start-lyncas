@@ -27,21 +27,6 @@
   float: left;
 }
 
-.close {
-  display: flex;
-  position: absolute;
-  justify-content: end;
-  width: 100%;
-  color: #fff;
-}
-
-#close {
-  display: none;
-  cursor: pointer;
-  font-size: 20px;
-  margin: 10px 10px 0 0;
-}
-
 .logo {
   width: 100%;
   display: flex;
@@ -171,10 +156,6 @@
 
   .logo img {
     width: 150px;
-  }
-
-  #close {
-    display: block;
   }
 
   #content {

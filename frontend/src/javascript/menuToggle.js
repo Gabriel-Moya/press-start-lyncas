@@ -1,12 +1,7 @@
 const iconMenuToggle = document.getElementById('toggle');
-const iconCloseMenu = document.getElementById('close');
 const container = document.querySelector('.container');
 const sidebar = document.querySelector(".sidebar");
 const widthScreen = window.screen.width;
-
-iconCloseMenu.addEventListener("click", () => {
-  hideMenu();
-});
 
 iconMenuToggle.addEventListener("click", () => {
 

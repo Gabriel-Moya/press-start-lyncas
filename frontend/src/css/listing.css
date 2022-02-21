@@ -64,10 +64,18 @@ button:hover {
 
 
 /* ===== TABLE ===== */
+.table {
+  display: block;
+  height: auto;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 0 15px;
+}
+
 .content-table {
   font-size: 0.9em;
-  width: calc(100% - 60px);
   color: #757f98;
+  width: 100%;
   -webkit-border-vertical-spacing: 10px;
   -webkit-border-horizontal-spacing: 0;
 }
@@ -82,10 +90,6 @@ button:hover {
   align-items: center;
   font-size: 16px;
   padding: 15px;
-  border: none;
-}
-
-td {
   border: none;
 }
 
@@ -124,4 +128,38 @@ td {
 
 #content {
   overflow: auto;
+}
+
+@media (max-width: 800px) {
+
+  .container {
+    width: 100%;
+  }
+
+  .table-header {
+    flex-direction: column;
+  }
+
+  .search {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .search ion-icon {
+    font-size: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  table thead {
+    display: none;
+  }
+
+  table tbody tr td {
+    display: block;
+  }
+
+  .content-table tbody tr {
+    margin: 0 auto;
+  }
 }

@@ -66,8 +66,11 @@ button:hover {
   opacity: 0.9;
 }
 
-
-
+@media (max-width: 800px) {
+  fieldset {
+    display: block;
+  }
+}
 
 /* ERROR OR SUCCESS */
 .error {

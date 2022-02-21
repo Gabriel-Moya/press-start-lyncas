@@ -151,7 +151,17 @@
   font-size: 28px;
 }
 
+.title {
+  margin: 0 auto;
+  width: 500px;
+}
+
 @media (max-width: 800px) {
+
+  .container {
+    width: 100%;
+  }
+  
   .sidebar {
     position: absolute;
     display: none;

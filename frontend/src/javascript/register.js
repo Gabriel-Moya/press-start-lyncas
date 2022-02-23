@@ -17,13 +17,28 @@ inputLastname.addEventListener("blur", () => {
   verifyBlankField(inputLastname);
 });
 
-inputPhonenumber.addEventListener("blur", () => {
+inputPhonenumber.addEventListener("keyup", () => {
   verifyBlankField(inputPhonenumber);
-  inputPhonenumber.value = inputPhonenumber.value
-    .replace(/^(\d{2})(\d{4,5})(\d{4}$)/, "($1) $2-$3");
 
-  validatePhone(inputPhonenumber);
+  if ((inputPhonenumber.value).length < 14) {
+    inputPhonenumber.value = inputPhonenumber.value
+      .replace(/\D/g, "")
+      .replace(/(\d{2})(\d)/, "($1) $2")
+      .replace(/(\d{4})(\d)/, "$1-$2")
+      .replace(/(-\d{4})(\d+?)$/, "$1");
+  } else if ((inputPhonenumber.value).length > 14) {
+    inputPhonenumber.value = inputPhonenumber.value
+      .replace(/\D/g, "")
+      .replace(/(\d{2})(\d)/, "($1) $2")
+      .replace(/(\d{5})(\d)/, "$1-$2")
+      .replace(/(-\d{4})(\d+?)$/, "$1");
+  }
+  
 });
+
+inputPhonenumber.addEventListener("blur", () => {
+  validatePhone(inputPhonenumber);
+})
 
 inputBirthday.addEventListener("blur", () => {
   verifyBlankField(inputBirthday);

@@ -22,7 +22,7 @@ fieldset {
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-bottom: 30px;
+  margin: 0 7px 30px 7px;
 }
 
 .fields label {
@@ -34,7 +34,7 @@ fieldset {
   height: 3rem;
   border-radius: 5px;
   border: 1px solid #bac1ca;
-  margin-right: 15px;
+  /* margin-right: 15px; */
   padding: 0 10px;
 }
 
@@ -43,6 +43,7 @@ fieldset {
   align-items: center;
   font-size: large;
   margin-bottom: 30px;
+  margin-left: 7px;
 }
 
 .active input {
@@ -59,6 +60,7 @@ button {
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
+  margin-left: 7px;
 }
 
 button:hover {
@@ -67,6 +69,11 @@ button:hover {
 }
 
 @media (max-width: 800px) {
+  
+  h2 {
+    font-size: 24px;
+  }
+
   fieldset {
     display: block;
   }

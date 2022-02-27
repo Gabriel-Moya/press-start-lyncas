@@ -17,21 +17,29 @@
 
     <header class="sidebar">
 
-      <div class="logo">
-        <img src="images/Logo_Fundo_Transparente_Branca.png" alt="Logo branca Lyncas">
+      <div class="top-section">
+
+        <div class="close">
+          <ion-icon name="close-circle-outline" id="close"></ion-icon>
+        </div>
+
+        <div class="logo">
+          <img src="images/Logo_Fundo_Transparente_Branca.png" alt="Logo branca Lyncas">
+        </div>
+
       </div>
 
       <nav class="nav">
 
         <div class="nav-list">
-          <a href="#" class="nav-link">
+          <a href="/frontend/src/dashboard.html" class="nav-link">
             <ion-icon name="grid-outline" class="nav-icon"></ion-icon>
             <span class="nav-name">Dashboard</span>
-            <ion-icon name="chevron-forward-outline" class="active-indicator"></ion-icon>
           </a>
           <a href="#" class="nav-link">
             <ion-icon name="wallet-outline" class="nav-icon"></ion-icon>
             <span class="nav-name">Usuários</span>
+            <ion-icon name="chevron-forward-outline" class="active-indicator"></ion-icon>
           </a>
         </div>
 
@@ -43,7 +51,7 @@
 
       <div class="topbar">
 
-        <ion-icon name="reorder-three-outline" class="icon-topbar"></ion-icon>
+        <ion-icon name="reorder-three-outline" class="icon-topbar" id="toggle"></ion-icon>
 
         <div class="user">
 
@@ -74,42 +82,46 @@
           </div>
         </div>
 
-        <table class="content-table">
+        <div class="table">
 
-          <thead>
-            <tr>
-              <th>
-                Nome
-                <ion-icon name="arrow-up-outline" class="sort-icon"></ion-icon>
-                <ion-icon name="arrow-down-outline" class="sort-icon"></ion-icon>
-              </th>
-              <th>
-                Telefone
-                <ion-icon name="arrow-up-outline" class="sort-icon"></ion-icon>
-                <ion-icon name="arrow-down-outline" class="sort-icon"></ion-icon>
-              </th>
-              <th>
-                Email
-                <ion-icon name="arrow-up-outline" class="sort-icon"></ion-icon>
-                <ion-icon name="arrow-down-outline" class="sort-icon"></ion-icon>
-              </th>
-              <th>
-                Data Nasc.
-                <ion-icon name="arrow-up-outline" class="sort-icon"></ion-icon>
-                <ion-icon name="arrow-down-outline" class="sort-icon"></ion-icon>
-              </th>
-              <th>
-                Status
-                <ion-icon name="arrow-up-outline" class="sort-icon"></ion-icon>
-                <ion-icon name="arrow-down-outline" class="sort-icon"></ion-icon>
-              </th>
-              <th>Ações</th>
-            </tr>
-          </thead>
+          <table class="content-table">
 
-          <tbody id="table-body"></tbody>
+            <thead>
+              <tr>
+                <th>
+                  Nome
+                  <ion-icon name="arrow-up-outline" class="sort-icon"></ion-icon>
+                  <ion-icon name="arrow-down-outline" class="sort-icon"></ion-icon>
+                </th>
+                <th>
+                  Telefone
+                  <ion-icon name="arrow-up-outline" class="sort-icon"></ion-icon>
+                  <ion-icon name="arrow-down-outline" class="sort-icon"></ion-icon>
+                </th>
+                <th>
+                  Email
+                  <ion-icon name="arrow-up-outline" class="sort-icon"></ion-icon>
+                  <ion-icon name="arrow-down-outline" class="sort-icon"></ion-icon>
+                </th>
+                <th>
+                  Data Nasc.
+                  <ion-icon name="arrow-up-outline" class="sort-icon"></ion-icon>
+                  <ion-icon name="arrow-down-outline" class="sort-icon"></ion-icon>
+                </th>
+                <th>
+                  Status
+                  <ion-icon name="arrow-up-outline" class="sort-icon"></ion-icon>
+                  <ion-icon name="arrow-down-outline" class="sort-icon"></ion-icon>
+                </th>
+                <th>Ações</th>
+              </tr>
+            </thead>
 
-        </table>
+            <tbody id="table-body"></tbody>
+
+          </table>
+
+        </div>
 
       </div>
 
@@ -120,6 +132,7 @@
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <script src="./javascript/listing.js"></script>
+  <script src="./javascript/menuToggle.js"></script>
 </body>
 
 </html>

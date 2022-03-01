@@ -25,7 +25,7 @@ ALTER TABLE autenticacao
 	ADD FOREIGN KEY (id_pessoa) REFERENCES pessoas(id_pessoa);
 GO
 
-DECLARE @id int;
+
 INSERT INTO pessoas (nome, sobrenome, email, telefone, data_nascimento)
 	VALUES ('Andre', 'Stanlley', 'usuario@lyncas.net', '(67) 99999-8888', '1998-09-19');
 INSERT INTO autenticacao (id_pessoa, senha, ativo)

@@ -9,6 +9,7 @@ CREATE TABLE pessoas (
 	nome varchar(255) NOT NULL,
 	sobrenome varchar(255) NOT NULL,
 	email varchar(255) NOT NULL,
+	telefone varchar(255) NOT NULL,
 	data_nascimento date  NOT NULL
 );
 
@@ -25,78 +26,65 @@ ALTER TABLE autenticacao
 GO
 
 DECLARE @id int;
-INSERT INTO pessoas (nome, sobrenome, email, data_nascimento)
-	VALUES ('Andre', 'Stanlley', 'usuario@lyncas.net', '1998-09-19');
-SELECT @id = SCOPE_IDENTITY();
-
+INSERT INTO pessoas (nome, sobrenome, email, telefone, data_nascimento)
+	VALUES ('Andre', 'Stanlley', 'usuario@lyncas.net', '(67) 99999-8888', '1998-09-19');
 INSERT INTO autenticacao (id_pessoa, senha, ativo)
-	VALUES (@id, 'lyncas123', 1);
+	VALUES (SCOPE_IDENTITY(), 'lyncas123', 1);
 
-INSERT INTO pessoas (nome, sobrenome, email, data_nascimento)
-	VALUES ('Bruno', 'Trindade', 'usuario@lyncas.net', '1998-09-19');
-	SELECT @id = SCOPE_IDENTITY();
+INSERT INTO pessoas (nome, sobrenome, email, telefone, data_nascimento)
+	VALUES ('Bruno', 'Trindade', 'usuario@lyncas.net', '(67) 99999-8888', '1998-09-19');
 INSERT INTO autenticacao (id_pessoa, senha, ativo)
-	VALUES (@id, 'lyncasnet', 1);
+	VALUES (SCOPE_IDENTITY(), 'lyncasnet', 1);
 
-INSERT INTO pessoas (nome, sobrenome, email, data_nascimento)
-	VALUES ('Gabriel', 'Moya', 'gabriel.mm@lyncas.net', '1996-07-15');
-	SELECT @id = SCOPE_IDENTITY();
+INSERT INTO pessoas (nome, sobrenome, email, telefone, data_nascimento)
+	VALUES ('Gabriel', 'Moya', 'gabriel.mm@lyncas.net', '(67) 99999-8888', '1996-07-15');
 INSERT INTO autenticacao (id_pessoa, senha, ativo)
-	VALUES (@id, 'lyncas@net', 1);
+	VALUES (SCOPE_IDENTITY(), 'lyncas@net', 1);
 
-INSERT INTO pessoas (nome, sobrenome, email, data_nascimento)
-	VALUES ('Genara', 'de Souza', 'usuario@lyncas.net', '1998-09-19');
-	SELECT @id = SCOPE_IDENTITY();
+INSERT INTO pessoas (nome, sobrenome, email, telefone, data_nascimento)
+	VALUES ('Genara', 'de Souza', 'usuario@lyncas.net', '(67) 99999-8888', '1998-09-19');
 INSERT INTO autenticacao (id_pessoa, senha, ativo)
-	VALUES (@id, 'lyncas@net123', 1);
+	VALUES (SCOPE_IDENTITY(), 'lyncas@net123', 1);
 
-INSERT INTO pessoas (nome, sobrenome, email, data_nascimento)
-	VALUES ('Henrique', 'Carvalho', 'usuario@lyncas.net', '1998-09-19')
-	SELECT @id = SCOPE_IDENTITY();
+INSERT INTO pessoas (nome, sobrenome, email, telefone, data_nascimento)
+	VALUES ('Henrique', 'Carvalho', 'usuario@lyncas.net', '(67) 99999-8888', '1998-09-19')
 INSERT INTO autenticacao (id_pessoa, senha, ativo)
-	VALUES (@id, 'lyncas@netAbc', 1);
+	VALUES (SCOPE_IDENTITY(), 'lyncas@netAbc', 1);
 
-INSERT INTO pessoas (nome, sobrenome, email, data_nascimento)
-	VALUES ('Mauricio', 'Costa', 'usuario@lyncas.net', '1998-09-19')
-	SELECT @id = SCOPE_IDENTITY();
+INSERT INTO pessoas (nome, sobrenome, email, telefone, data_nascimento)
+	VALUES ('Mauricio', 'Costa', 'usuario@lyncas.net', '(67) 99999-8888', '1998-09-19')
 INSERT INTO autenticacao (id_pessoa, senha, ativo)
-	VALUES (@id, 'lyncas123', 1);
+	VALUES (SCOPE_IDENTITY(), 'lyncas123', 1);
 
-INSERT INTO pessoas (nome, sobrenome, email, data_nascimento)
-	VALUES ('Renato', 'Ganske', 'usuario@lyncas.net', '1998-09-19')
-	SELECT @id = SCOPE_IDENTITY();
+INSERT INTO pessoas (nome, sobrenome, email, telefone, data_nascimento)
+	VALUES ('Renato', 'Ganske', 'usuario@lyncas.net', '(67) 99999-8888', '1998-09-19')
 INSERT INTO autenticacao (id_pessoa, senha, ativo)
-	VALUES (@id, 'lyncasnetAbc123', 1);
+	VALUES (SCOPE_IDENTITY(), 'lyncasnetAbc123', 1);
 
-INSERT INTO pessoas (nome, sobrenome, email, data_nascimento)
-	VALUES ('Telmi', 'Adame', 'usuario@lyncas.net', '1998-09-19')
-	SELECT @id = SCOPE_IDENTITY();
+INSERT INTO pessoas (nome, sobrenome, email, telefone, data_nascimento)
+	VALUES ('Telmi', 'Adame', 'usuario@lyncas.net', '(67) 99999-8888', '1998-09-19')
 INSERT INTO autenticacao (id_pessoa, senha, ativo)
-	VALUES (@id, 'lyncas@net', 1);
+	VALUES (SCOPE_IDENTITY(), 'lyncas@net', 1);
 
-INSERT INTO pessoas (nome, sobrenome, email, data_nascimento)
-	VALUES ('Thalisson', 'Monteiro', 'usuario@lyncas.net', '1998-09-19')
-	SELECT @id = SCOPE_IDENTITY();
+INSERT INTO pessoas (nome, sobrenome, email, telefone, data_nascimento)
+	VALUES ('Thalisson', 'Monteiro', 'usuario@lyncas.net', '(67) 99999-8888', '1998-09-19')
 INSERT INTO autenticacao (id_pessoa, senha, ativo)
-	VALUES (@id, 'lyncas@net', 1);
+	VALUES (SCOPE_IDENTITY(), 'lyncas@net', 1);
 
-INSERT INTO pessoas (nome, sobrenome, email, data_nascimento)
-	VALUES ('Vanessa', 'Eich', 'usuario@lyncas.net', '1998-09-19')
-	SELECT @id = SCOPE_IDENTITY();
+INSERT INTO pessoas (nome, sobrenome, email, telefone, data_nascimento)
+	VALUES ('Vanessa', 'Eich', 'usuario@lyncas.net', '(67) 99999-8888', '1998-09-19')
 INSERT INTO autenticacao (id_pessoa, senha, ativo)
-	VALUES (@id, 'lyncas@net', 1);
+	VALUES (SCOPE_IDENTITY(), 'lyncas@net', 1);
 
-INSERT INTO pessoas (nome, sobrenome, email, data_nascimento)
-	VALUES ('Garbiel', 'Moy', 'gabriel.mm@lyncas.net', '1996-07-15')
-	SELECT @id = SCOPE_IDENTITY();
+INSERT INTO pessoas (nome, sobrenome, email, telefone, data_nascimento)
+	VALUES ('Garbiel', 'Moy', 'gabriel.mm@lyncas.net', '(67) 99999-8888', '1996-07-15')
 INSERT INTO autenticacao (id_pessoa, senha, ativo)
-	VALUES (@id, 'lyncasnetAbc123', 0);
+	VALUES (SCOPE_IDENTITY(), 'lyncasnetAbc123', 0);
 
-INSERT INTO pessoas (nome, sobrenome, email, data_nascimento)
-	VALUES ('Gabriel', 'Moya', 'gabriel.mm@lyncas.net', '1996-07-15')
-	SELECT @id = SCOPE_IDENTITY();
+INSERT INTO pessoas (nome, sobrenome, email, telefone, data_nascimento)
+	VALUES ('Gabriel', 'Moya', 'gabriel.mm@lyncas.net', '(67) 99999-8888', '1996-07-15')
 INSERT INTO autenticacao (id_pessoa, senha, ativo)
-	VALUES (@id, 'lyncasnet123', 0);
+	VALUES (SCOPE_IDENTITY(), 'lyncasnet123', 0);
 GO
 
 

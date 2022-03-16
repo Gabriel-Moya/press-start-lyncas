@@ -3,6 +3,7 @@ using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using PressStartApi.DTO;
+using PressStartApi.DTO.Response;
 using PressStartApi.Models;
 using PressStartApi.Validations;
 using System.Linq;
@@ -24,9 +25,13 @@ namespace PressStartApi.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> Get()
+        public async Task<ActionResult<IEnumerable<UserResponseDTO>>> Get()
         {
-            return await _context.User.Include(x => x.Authentication).ToListAsync();
+            List<User> users = await _context.User.Include(x => x.Authentication).ToListAsync();
+
+            List<UserResponseDTO> usersResponse = _mapper.Map<List<UserResponseDTO>>(users);
+
+            return usersResponse;
         }
 
         [HttpGet("{id}")]
@@ -72,8 +77,6 @@ namespace PressStartApi.Controllers
 
             var dbUser = await _context.User.Include(x => x.Authentication).SingleOrDefaultAsync(x => x.Id == id);
 
-            _mapper.Map(request, dbUser);
-
             if (dbUser == null)
                 return BadRequest("Usuário não encontrado.");
 
@@ -81,6 +84,11 @@ namespace PressStartApi.Controllers
             {
                 return BadRequest(results.Errors);
             }
+
+            string phoneReplaced = Regex.Replace(request.Phone, @"\D", "");
+            request.Phone = phoneReplaced;
+
+            _mapper.Map(request, dbUser);
 
             dbUser.Authentication.Password = request.Password;
             dbUser.Authentication.IsActive = request.IsActive;

@@ -1,4 +1,4 @@
-const url = 'https://api.jsonbin.io/b/6202562f69b72261be54dd53';
+const url = 'https://localhost:7042/api/Users';
 
 const content = document.querySelector('#content');
 const tableBody = document.querySelector('#table-body');
@@ -20,32 +20,58 @@ function insertUsers(usersObj) {
 
     cellName.innerHTML = `<div class="user">
                             <img src="images/user-300x300.png" alt="Foto do usuário">
-                            <span>${user.name}</span>
+                            <span>${user.name} ${user.lastname}</span>
                           </div>`;
 
-    cellPhoneNumber.innerHTML = user.phonenumber;
+    user.phone = phoneMask(user.phone);
+    cellPhoneNumber.innerHTML = user.phone;
     cellEmail.innerHTML = user.email;
-    cellBirth.innerHTML = user.birth;
 
-    if(user.status) {
+    let birthDate = new Date(user.birthDate);
+    cellBirth.innerHTML = new Intl.DateTimeFormat('pt-BR').format(birthDate);
+
+    if(user.isActive) {
       cellStatus.innerHTML = `<span class="status-active">Ativo</span>`;
     } else {
       cellStatus.innerHTML = `<span class="status-inactive">Inativo</span>`;
     }
-    
+
     cellActions.innerHTML = `<div class="action-icons">
-                              <a href="">
+                              <a href="${url}/${user.id}">
                                 <i>
                                   <ion-icon name="create-outline"></ion-icon>
                                 </i>
                               </a>
-                              <a href="">
+                              <a href="${url}/${user.id}">
                                 <i>
                                   <ion-icon name="trash-outline"></ion-icon>
                                 </i>
                               </a>
                             </div>`;
   });
+}
+
+
+function phoneMask(number) {
+
+  if (number.length == 10) {
+    number = number
+      .replace(/(\d{2})(\d)/, "($1) $2")
+      .replace(/(\d{4})(\d)/, "$1-$2")
+      .replace(/(-\d{4})(\d+?)$/, "$1");
+
+    return number;
+  }
+  
+  if (number.length == 11) {
+    number = number
+      .replace(/(\d{2})(\d)/, "($1) $2")
+      .replace(/(\d{5})(\d)/, "$1-$2")
+      .replace(/(-\d{4})(\d+?)$/, "$1");
+
+    return number;
+  }
+
 }
 
 

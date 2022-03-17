@@ -1,3 +1,4 @@
+const url = 'https://localhost:7042/api/Users';
 const inputName = document.getElementById('name');
 const inputLastname = document.getElementById('lastname');
 const inputPhonenumber = document.getElementById('phonenumber');
@@ -76,8 +77,31 @@ document.querySelector("form")
         && validateEmail(inputEmail)
         && validatePasswords(inputPassword, inputRetypePassword))
         {
-          setSuccess();
-    }
+
+          const data = {
+            name: inputName.value,
+            lastname: inputLastname.value,
+            email: inputEmail.value,
+            phone: inputPhonenumber.value,
+            birthDate: inputBirthday.value,
+            password: inputPassword.value,
+            isActive: inputActive.checked
+          };
+
+          fetch(url, {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+          })
+          .then(function(response) {
+            return response.json()
+          })
+          .then(function(response) {
+            console.log(response);
+          })
+
+          setSuccess();  // REFATORAR - SUCESSO SOMENTE SE RETORNAR 200 DO BACKEND
+        }
   });
 
 

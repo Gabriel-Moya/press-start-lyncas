@@ -1,8 +1,7 @@
-﻿namespace PressStartApi.DTO.Response
+﻿namespace PressStartApi.DTO.Request
 {
-    public class UserResponseDTO
+    public class UpdateUserDTO
     {
-        public int Id { get; set; }
         public string Name { get; set; } = String.Empty;
         public string Lastname { get; set; } = String.Empty;
         public string Email { get; set; } = String.Empty;

@@ -37,12 +37,12 @@ function insertUsers(usersObj) {
     }
 
     cellActions.innerHTML = `<div class="action-icons">
-                              <a href="${url}/${user.id}">
+                              <a data-js=[editUser] href="${url}/${user.id}">
                                 <i>
                                   <ion-icon name="create-outline"></ion-icon>
                                 </i>
                               </a>
-                              <a href="${url}/${user.id}">
+                              <a data-js=[deleteUser] href="javascript:deleteUser(${user.id})">
                                 <i>
                                   <ion-icon name="trash-outline"></ion-icon>
                                 </i>
@@ -75,10 +75,29 @@ function phoneMask(number) {
 }
 
 
-fetch(url)
+async function deleteUser(id) {
+
+  await fetch(`${url}/${id}`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' }
+  })
+
+  listUsers();
+
+}
+
+
+function listUsers() {
+
+  fetch(url)
   .then(response => {
     return response.json();
   })
   .then( users => {
     insertUsers(users);
   })
+
+}
+
+
+window.onload(listUsers());

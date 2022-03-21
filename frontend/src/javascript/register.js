@@ -8,7 +8,7 @@ const inputPassword = document.getElementById('password');
 const inputRetypePassword = document.getElementById('retypePassword');
 const inputActive = document.getElementById('active');
 const submitButton = document.getElementsByName('submit');
-
+const idUrl = location.href.split("?id=")[1];
 
 inputName.addEventListener("blur", () => {
   verifyBlankField(inputName);
@@ -50,60 +50,126 @@ inputEmail.addEventListener("blur", () => {
   validateEmail(inputEmail);
 });
 
-inputPassword.addEventListener("blur", () => {
-  verifyBlankField(inputPassword);
-  validatePasswords(inputPassword, inputRetypePassword);
-});
+if (idUrl != undefined) {
+  getUser(idUrl);
 
-inputRetypePassword.addEventListener("blur", () => {
-  verifyBlankField(inputRetypePassword);
-  validatePasswords(inputPassword, inputRetypePassword);
-});
+  document.querySelector("form")
+    .addEventListener("submit", (event) => {
+      event.preventDefault();
+  
+      verifyBlankField(inputName);
+      verifyBlankField(inputLastname);
+      validatePhone(inputPhonenumber);
+      validateBirthday(inputBirthday);
+      validateEmail(inputEmail);
+  
+      if (validatePhone(inputPhonenumber)
+          && validateBirthday(inputBirthday)
+          && validateEmail(inputEmail))
+          {
+  
+            const data = {
+              name: inputName.value,
+              lastname: inputLastname.value,
+              email: inputEmail.value,
+              phone: inputPhonenumber.value,
+              birthDate: inputBirthday.value,
+              isActive: inputActive.checked
+            };
+  
+            fetch(`${url}/${idUrl}`, {
+              method: 'PUT',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(data)
+            })
+            .then(function(response) {
+              return response.json()
+            })
+            .then(function(response) {
+              console.log(response);
+            })
+  
+            setSuccess('Usuário atualizado com sucesso');  // REFATORAR - SUCESSO SOMENTE SE RETORNAR 200 DO BACKEND
+          }
+    });
 
+} else {
 
-document.querySelector("form")
-  .addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    verifyBlankField(inputName);
-    verifyBlankField(inputLastname);
-    validatePhone(inputPhonenumber);
-    validateBirthday(inputBirthday);
-    validateEmail(inputEmail);
+  inputPassword.addEventListener("blur", () => {
+    verifyBlankField(inputPassword);
     validatePasswords(inputPassword, inputRetypePassword);
-
-    if (validatePhone(inputPhonenumber)
-        && validateBirthday(inputBirthday)
-        && validateEmail(inputEmail)
-        && validatePasswords(inputPassword, inputRetypePassword))
-        {
-
-          const data = {
-            name: inputName.value,
-            lastname: inputLastname.value,
-            email: inputEmail.value,
-            phone: inputPhonenumber.value,
-            birthDate: inputBirthday.value,
-            password: inputPassword.value,
-            isActive: inputActive.checked
-          };
-
-          fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-          })
-          .then(function(response) {
-            return response.json()
-          })
-          .then(function(response) {
-            console.log(response);
-          })
-
-          setSuccess();  // REFATORAR - SUCESSO SOMENTE SE RETORNAR 200 DO BACKEND
-        }
   });
+  
+  inputRetypePassword.addEventListener("blur", () => {
+    verifyBlankField(inputRetypePassword);
+    validatePasswords(inputPassword, inputRetypePassword);
+  });
+  
+  document.querySelector("form")
+    .addEventListener("submit", (event) => {
+      event.preventDefault();
+  
+      verifyBlankField(inputName);
+      verifyBlankField(inputLastname);
+      validatePhone(inputPhonenumber);
+      validateBirthday(inputBirthday);
+      validateEmail(inputEmail);
+      validatePasswords(inputPassword, inputRetypePassword);
+  
+      if (validatePhone(inputPhonenumber)
+          && validateBirthday(inputBirthday)
+          && validateEmail(inputEmail)
+          && validatePasswords(inputPassword, inputRetypePassword))
+          {
+  
+            const data = {
+              name: inputName.value,
+              lastname: inputLastname.value,
+              email: inputEmail.value,
+              phone: inputPhonenumber.value,
+              birthDate: inputBirthday.value,
+              password: inputPassword.value,
+              isActive: inputActive.checked
+            };
+  
+            fetch(url, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(data)
+            })
+            .then(function(response) {
+              return response.json()
+            })
+            .then(function(response) {
+              console.log(response);
+            })
+  
+            setSuccess('Usuário cadastrado com sucesso');  // REFATORAR - SUCESSO SOMENTE SE RETORNAR 200 DO BACKEND
+          }
+    });
+}
 
+function phoneMask(number) {
+
+  if (number.length == 10) {
+    number = number
+      .replace(/(\d{2})(\d)/, "($1) $2")
+      .replace(/(\d{4})(\d)/, "$1-$2")
+      .replace(/(-\d{4})(\d+?)$/, "$1");
+
+    return number;
+  }
+  
+  if (number.length == 11) {
+    number = number
+      .replace(/(\d{2})(\d)/, "($1) $2")
+      .replace(/(\d{5})(\d)/, "$1-$2")
+      .replace(/(-\d{4})(\d+?)$/, "$1");
+
+    return number;
+  }
+
+}
 
 function verifyBlankField(field) {
   const blankFieldMessage = "Campo obrigatório!";
@@ -114,7 +180,6 @@ function verifyBlankField(field) {
     clearInfo(field);
   }
 }
-
 
 function validatePhone(number) {
   const regEx = /^\(\d{2}\)\s\d{4,5}-\d{4}/;
@@ -157,7 +222,6 @@ function validateEmail(email) {
     setError(email, incorrectFieldMessage);
   }
 }
-
 
 function validatePasswords(password, retypePassword) {
   const regEx = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[0-9])[0-9a-zA-Z$*&23]{6,}/;
@@ -202,7 +266,7 @@ function clearInfo(input) {
   }
 }
 
-function setSuccess() {
+function setSuccess(message) {
   const formElement = document.querySelector('form');
   const divElement = document.createElement('div');
 
@@ -212,5 +276,31 @@ function setSuccess() {
   
   formElement.insertAdjacentElement('afterend', divElement);
   divElement.classList.add('success');
-  divElement.innerHTML = 'Usuário cadastrado com sucesso';
+  divElement.innerHTML = message;
+}
+
+function getUser(id) {
+  
+  fetch(`${url}/${id}`)
+    .then(response => {
+      return response.json();
+    })
+    .then(user => {
+      insertUserValuesOnForm(user);
+    })
+
+}
+
+function insertUserValuesOnForm(user) {
+
+  inputName.value = user.name;
+  inputLastname.value = user.lastname;
+  inputPhonenumber.value = phoneMask(user.phone);
+  inputBirthday.value = user.birthDate.split("T")[0];
+  inputEmail.value = user.email;
+  inputActive.checked = user.authentication.isActive;
+
+  inputPassword.required = false;
+  inputRetypePassword.required = false;
+
 }

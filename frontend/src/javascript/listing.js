@@ -2,6 +2,7 @@ const url = 'https://localhost:7042/api/Users';
 
 const content = document.querySelector('#content');
 const tableBody = document.querySelector('#table-body');
+const searchField = document.querySelector('#search-user');
 
 function insertUsers(usersObj) {
 
@@ -23,8 +24,7 @@ function insertUsers(usersObj) {
                             <span>${user.name} ${user.lastname}</span>
                           </div>`;
 
-    user.phone = phoneMask(user.phone);
-    cellPhoneNumber.innerHTML = user.phone;
+    cellPhoneNumber.innerHTML = phoneMask(user.phone);
     cellEmail.innerHTML = user.email;
 
     let birthDate = new Date(user.birthDate);
@@ -37,7 +37,7 @@ function insertUsers(usersObj) {
     }
 
     cellActions.innerHTML = `<div class="action-icons">
-                              <a data-js=[editUser] href="${url}/${user.id}">
+                              <a data-js=[editUser] href="./register.html?id=${user.id}">
                                 <i>
                                   <ion-icon name="create-outline"></ion-icon>
                                 </i>
@@ -50,7 +50,6 @@ function insertUsers(usersObj) {
                             </div>`;
   });
 }
-
 
 function phoneMask(number) {
 
@@ -74,18 +73,20 @@ function phoneMask(number) {
 
 }
 
-
 async function deleteUser(id) {
 
-  await fetch(`${url}/${id}`, {
-    method: 'DELETE',
-    headers: { 'Content-Type': 'application/json' }
-  })
+  const confirmDelete = window.confirm("Deseja realmente excluir o usuário?");
+
+  if (confirmDelete) {
+    await fetch(`${url}/${id}`, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' }
+    })
+  }
 
   listUsers();
 
 }
-
 
 function listUsers() {
 
@@ -94,10 +95,30 @@ function listUsers() {
     return response.json();
   })
   .then( users => {
+    searchUser(users);
     insertUsers(users);
   })
 
 }
 
+function searchUser(usersList) {
+  console.log(usersList);
 
-window.onload(listUsers());
+  searchField.addEventListener("keyup", () => {
+
+    const searched = usersList.filter(
+      (user) =>
+        user.name.toUpperCase().indexOf(searchField.value.toUpperCase()) >= 0 ||
+        user.lastname.toUpperCase().indexOf(searchField.value.toUpperCase()) >= 0 ||
+        user.email.toUpperCase().indexOf(searchField.value.toUpperCase()) >= 0
+    );
+
+    if (searchField.value != "") {
+      insertUsers(searched);
+    } else {
+      insertUsers(usersList);
+    }
+  })
+}
+
+window.onload = listUsers();

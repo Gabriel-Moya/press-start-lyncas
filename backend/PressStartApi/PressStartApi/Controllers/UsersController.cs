@@ -3,9 +3,11 @@ using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using PressStartApi.DTO;
+using PressStartApi.DTO.Request;
 using PressStartApi.DTO.Response;
 using PressStartApi.Models;
 using PressStartApi.Validations;
+using PressStartApi.Validators;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -27,7 +29,7 @@ namespace PressStartApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserResponseDTO>>> Get()
         {
-            List<User> users = await _context.User.Include(x => x.Authentication).ToListAsync();
+            List<User> users = await _context.User.Include(x => x.Authentication).AsNoTracking().ToListAsync();
 
             List<UserResponseDTO> usersResponse = _mapper.Map<List<UserResponseDTO>>(users);
 
@@ -44,7 +46,7 @@ namespace PressStartApi.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<List<InsertUserDTO>>> AddUser(InsertUserDTO user)
+        public async Task<ActionResult<List<UserResponseDTO>>> AddUser(InsertUserDTO user)
         {
             ValidatorUser validator = new ValidatorUser();
             ValidationResult results = validator.Validate(user);
@@ -57,22 +59,25 @@ namespace PressStartApi.Controllers
             string phoneReplaced = Regex.Replace(user.Phone, @"\D", "");
             user.Phone = phoneReplaced;
 
-            User _user = _mapper.Map<InsertUserDTO, User>(user);
+            try
+            {
+                User _user = _mapper.Map<User>(user);
 
-            _user.Authentication.UserId = _user.Id;
-            _user.Authentication.Password = user.Password;
-            _user.Authentication.IsActive = user.IsActive;
+                _context.Add(_user);
 
-            _context.User.Add(_user);
-            await _context.SaveChangesAsync();
-
-            return Ok(await _context.User.ToListAsync());
+                await _context.SaveChangesAsync();
+                return Ok(_mapper.Map<UserResponseDTO>(_user));
+            }
+            catch
+            {
+                return BadRequest(new { message = "Não foi possivel criar o usuario." });
+            }
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<List<InsertUserDTO>>> UpdateUser(int id, InsertUserDTO request)
+        public async Task<ActionResult<List<UpdateUserDTO>>> UpdateUser(int id, UpdateUserDTO request)
         {
-            ValidatorUser validator = new ValidatorUser();
+            ValidatorPostUser validator = new ValidatorPostUser();
             ValidationResult results = validator.Validate(request);
 
             var dbUser = await _context.User.Include(x => x.Authentication).SingleOrDefaultAsync(x => x.Id == id);
@@ -90,7 +95,6 @@ namespace PressStartApi.Controllers
 
             _mapper.Map(request, dbUser);
 
-            dbUser.Authentication.Password = request.Password;
             dbUser.Authentication.IsActive = request.IsActive;
 
             _context.Update(dbUser).State = EntityState.Modified;

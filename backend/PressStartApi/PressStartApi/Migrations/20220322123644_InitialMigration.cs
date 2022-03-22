@@ -17,7 +17,7 @@ namespace PressStartApi.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "VARCHAR(255)", nullable: false),
                     Lastname = table.Column<string>(type: "VARCHAR(255)", nullable: false),
-                    Email = table.Column<string>(type: "VARCHAR(255)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Phone = table.Column<string>(type: "VARCHAR(11)", nullable: false),
                     BirthDate = table.Column<DateTime>(type: "DATE", nullable: false)
                 },
@@ -51,6 +51,12 @@ namespace PressStartApi.Migrations
                 name: "IX_Authentication_UserId",
                 table: "Authentication",
                 column: "UserId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_User_Email",
+                table: "User",
+                column: "Email",
                 unique: true);
         }
 

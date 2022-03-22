@@ -12,7 +12,7 @@ using PressStartApi.Data;
 namespace PressStartApi.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220316023814_InitialMigration")]
+    [Migration("20220322123644_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -63,7 +63,7 @@ namespace PressStartApi.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("VARCHAR(255)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Lastname")
                         .IsRequired()
@@ -78,6 +78,9 @@ namespace PressStartApi.Migrations
                         .HasColumnType("VARCHAR(11)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
 
                     b.ToTable("User", (string)null);
                 });

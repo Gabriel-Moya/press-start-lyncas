@@ -19,7 +19,7 @@ namespace PressStartApi.Data
                     builder.HasKey(x => x.Id);
                     builder.Property(x => x.Name).HasColumnType("VARCHAR(255)").IsRequired();
                     builder.Property(x => x.Lastname).HasColumnType("VARCHAR(255)").IsRequired();
-                    builder.Property(x => x.Email).HasColumnType("VARCHAR(255)").IsRequired();
+                    builder.HasIndex(x => x.Email).IsUnique();
                     builder.Property(x => x.Phone).HasColumnType("VARCHAR(11)").IsRequired();
                     builder.Property(x => x.BirthDate).HasColumnType("DATE").IsRequired();
                 }

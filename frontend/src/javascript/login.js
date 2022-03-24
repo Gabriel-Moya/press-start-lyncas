@@ -1,3 +1,5 @@
+import { errorLogin } from "./modules/errorLogin.js";
+
 const url = 'https://localhost:7042/api/Login';
 const email = document.querySelector('#email');
 const password = document.querySelector('#password');
@@ -21,7 +23,7 @@ function login() {
   .then(function(response) {
     console.log(response);
     if(response.message) {
-      console.log(`${response.message}`);
+      errorLogin(response.message);
     }
 
     if(response.email) {

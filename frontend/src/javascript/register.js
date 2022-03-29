@@ -298,7 +298,7 @@ function insertUserValuesOnForm(user) {
   inputPhonenumber.value = phoneMask(user.phone);
   inputBirthday.value = user.birthDate.split("T")[0];
   inputEmail.value = user.email;
-  inputActive.checked = user.authentication.isActive;
+  inputActive.checked = user.isActive;
 
   inputPassword.required = false;
   inputRetypePassword.required = false;

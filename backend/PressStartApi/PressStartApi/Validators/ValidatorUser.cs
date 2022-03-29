@@ -1,10 +1,8 @@
 ﻿using FluentValidation;
-using FluentValidation.Results;
 using PressStartApi.DTO;
-using PressStartApi.Models;
 using System.Text.RegularExpressions;
 
-namespace PressStartApi.Validations
+namespace PressStartApi.Validators
 {
     public class ValidatorUser : AbstractValidator<InsertUserDTO>
     {

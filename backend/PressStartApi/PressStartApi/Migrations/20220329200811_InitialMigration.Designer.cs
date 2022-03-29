@@ -12,7 +12,7 @@ using PressStartApi.Data;
 namespace PressStartApi.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220322123644_InitialMigration")]
+    [Migration("20220329200811_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

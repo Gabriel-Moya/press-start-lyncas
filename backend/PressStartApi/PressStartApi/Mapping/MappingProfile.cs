@@ -21,6 +21,7 @@ namespace PressStartApi.Mapping
 
             CreateMap<User, UpdateUserDTO>()
                 .ForMember(x => x.IsActive, x => x.MapFrom(x => x.Authentication.IsActive))
+                .ForMember(x => x.Password, x => x.MapFrom(x => x.Authentication.Password))
                 .ReverseMap();
         }
     }

@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using PressStartApi.Models;
+﻿using PressStartApi.Models;
 
 namespace PressStartApi.Data
 {

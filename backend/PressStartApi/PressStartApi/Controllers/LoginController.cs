@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PressStartApi.DTO.Request;
 using PressStartApi.DTO.Response;
+using PressStartApi.Interfaces;
 using PressStartApi.Models;
 
 namespace PressStartApi.Controllers
@@ -11,34 +12,18 @@ namespace PressStartApi.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
-        private readonly DataContext _context;
-        private readonly IMapper _mapper;
+        private readonly ILoginService _loginService;
 
-        public LoginController(DataContext context, IMapper mapper)
+        public LoginController(ILoginService loginService)
         {
-            _context = context;
-            _mapper = mapper;
+            _loginService = loginService;
         }
 
         [HttpPost]
         public async Task<ActionResult<UserResponseDTO>> Login(LoginDTO loginDTO)
         {
-            try
-            {
-                User user = await _context.Set<User>()
-                                    .Include(x => x.Authentication)
-                                    .FirstAsync(x => x.Email == loginDTO.Email &&
-                                    x.Authentication.Password == loginDTO.Password);
-
-                return Ok(_mapper.Map<UserResponseDTO>(user));
-            }
-            catch
-            {
-                return Unauthorized(new
-                {
-                    message = "Usuário não autorizado"
-                });
-            }
+            UserResponseDTO user = await _loginService.Login(loginDTO);
+            return user;
         }
     }
 }

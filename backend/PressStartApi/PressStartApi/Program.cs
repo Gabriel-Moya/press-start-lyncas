@@ -20,8 +20,10 @@ builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddScoped<ILoginRepository, LoginRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IAuthenticateService, AuthenticateService>();
 
 builder.Services.AddCors();
+builder.Services.AddAuthentication();
 
 builder.Services.AddDbContext<DataContext>(options =>
 {
@@ -63,10 +65,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
-
-app.UseMiddleware<ErrorMiddleware>();
+app.UseMiddleware<BasicAuthMiddleware>().UseMiddleware<ErrorMiddleware>();
 
 app.MapControllers();
+app.UseAuthorization();
+app.UseAuthentication();
 
 app.Run();

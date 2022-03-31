@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ApiLyncas.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using PressStartApi.DTO;
 using PressStartApi.DTO.Request;
 using PressStartApi.DTO.Response;
@@ -7,6 +8,7 @@ using PressStartApi.Models;
 
 namespace PressStartApi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase

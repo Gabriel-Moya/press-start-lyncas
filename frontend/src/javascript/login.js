@@ -21,9 +21,8 @@ function login() {
     return response.json();
   })
   .then(function(response) {
-    console.log(response);
-    if(response.message) {
-      errorLogin(response.message);
+    if(response.Message) {
+      errorLogin(response.Message);
     }
 
     if(response.email) {

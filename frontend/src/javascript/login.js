@@ -29,7 +29,8 @@ function login() {
       window.localStorage.setItem('id', JSON.stringify(`${response.id}`));
       window.localStorage.setItem('fullname', JSON.stringify(`${response.name} ${response.lastname}`));
       window.localStorage.setItem('email', JSON.stringify(`${response.email}`));
-      window.localStorage.setItem('auth', JSON.stringify(btoa(`${response.email}:${response.password}`)));
+      const auth = btoa(`${response.email}:${password.value}`);
+      window.localStorage.setItem('auth', JSON.stringify(`Basic ${auth}`));
 
       window.location.href="/frontend/src/dashboard.html";
     }

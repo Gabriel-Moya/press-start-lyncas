@@ -141,10 +141,12 @@ if (idUrl != undefined) {
               return response.json()
             })
             .then(function(response) {
-              console.log(response);
+              if(response.id){
+                setSuccess('Usuário cadastrado com sucesso');
+              } else {
+                // setError()
+              }
             })
-  
-            setSuccess('Usuário cadastrado com sucesso');  // REFATORAR - SUCESSO SOMENTE SE RETORNAR 200 DO BACKEND
           }
     });
 }

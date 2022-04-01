@@ -13,29 +13,35 @@ namespace PressStartApi.Validators
 
             RuleFor(user => user.Name)
                 .NotNull()
+                .NotEmpty()
                 .WithMessage("Campo obrigatorio");
 
             RuleFor(user => user.Lastname)
                 .NotNull()
+                .NotEmpty()
                 .WithMessage("Campo obrigatorio");
 
             RuleFor(user => user.Email)
                 .NotNull()
+                .NotEmpty()
                 .EmailAddress()
                 .WithMessage("Insira um email valido");
 
             RuleFor(user => user.Phone)
                 .NotNull()
+                .NotEmpty()
                 .WithMessage("Campo obrigatorio")
                 .Matches(regexPhone)
                 .WithMessage("Por favor, digite um numero valido");
 
             RuleFor(user => user.BirthDate)
                 .NotNull()
+                .NotEmpty()
                 .WithMessage("Campo obrigatorio");
 
             RuleFor(user => user.Password)
                 .NotNull()
+                .NotEmpty()
                 .WithMessage("Por favor, insira uma senha")
                 .Matches(regexPassword)
                 .WithMessage("Senha nao atende os requisitos minimos de seguranca");

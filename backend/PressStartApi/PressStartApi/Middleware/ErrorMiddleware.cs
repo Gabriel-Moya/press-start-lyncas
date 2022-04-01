@@ -25,7 +25,8 @@ namespace PressStartApi.Middleware
             }
             catch (Exception ex)
             {
-                ErrorResponse ExReponse = new ErrorResponse(ex.HResult, ex.Message);
+                string message = ex.HResult == -2146233088 ? "Email já cadastrado" : ex.Message;
+                ErrorResponse ExReponse = new ErrorResponse(ex.HResult, message);
                 await HandleExceptionAsync(context, ExReponse);
             }
         }

@@ -17,7 +17,7 @@ namespace PressStartApi.Repository
         {
             User user = await _context.Set<User>()
                                 .Include(x => x.Authentication)
-                                .FirstAsync(x => x.Email == loginDTO.Email &&
+                                .FirstOrDefaultAsync(x => x.Email == loginDTO.Email &&
                                 x.Authentication.Password == loginDTO.Password);
 
             return user;

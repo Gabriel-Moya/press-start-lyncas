@@ -35,7 +35,7 @@ namespace PressStartApi.Validators
                 .NotNull()
                 .WithMessage("Campo obrigatorio");
 
-            When(x => x.Password != null || x.Password != "", () =>
+            When(x => x.Password != null && x.Password != "", () =>
             {
                 RuleFor(user => user.Password)
                 .NotNull()

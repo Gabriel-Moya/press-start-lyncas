@@ -38,6 +38,8 @@ namespace PressStartApi.Data
                         .HasForeignKey<Authentication>(x => x.UserId);
                  }
             );
+
+            new DbInitializer(builder).seed();
         }
     }
 }

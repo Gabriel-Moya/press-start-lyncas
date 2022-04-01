@@ -58,21 +58,18 @@ namespace PressStartApi.Services
         {
             User dbUser = await _userRepository.GetById(id);
 
-            // Implementar a regra da senha
+            if (dbUser == null)
+                throw new BadHttpRequestException("Usuário não encontrado.", 404);
+
             if (user.Password == null || user.Password == "")
             {
                 user.Password = dbUser.Authentication.Password;
             }
 
-            if (dbUser == null)
-                throw new BadHttpRequestException("Usuário não encontrado.", 404);
-
             string phoneReplaced = Regex.Replace(user.Phone, @"\D", "");
             user.Phone = phoneReplaced;
 
             _mapper.Map(user, dbUser);
-
-            dbUser.Authentication.IsActive = user.IsActive;
 
             await _userRepository.UpdateUser(dbUser);
 

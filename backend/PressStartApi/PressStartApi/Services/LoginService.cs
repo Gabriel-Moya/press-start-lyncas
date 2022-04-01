@@ -20,6 +20,12 @@ namespace PressStartApi.Services
         public async Task<UserResponseDTO> Login(LoginDTO loginDTO)
         {
             User userLogin = await _loginRepository.Login(loginDTO);
+
+            if(userLogin == null)
+            {
+                throw new BadHttpRequestException("Credenciais inválidas", 401);
+            }
+
             return _mapper.Map<UserResponseDTO>(userLogin);
         }
     }

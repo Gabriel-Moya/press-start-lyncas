@@ -1,3 +1,6 @@
+// import { url } from './modules/URL.js'
+
+// console.log(url);
 const url = 'https://localhost:7042/api/Users';
 const inputName = document.getElementById('name');
 const inputLastname = document.getElementById('lastname');
@@ -74,22 +77,34 @@ if (idUrl != undefined) {
               email: inputEmail.value,
               phone: inputPhonenumber.value,
               birthDate: inputBirthday.value,
+              inputPassword: inputPassword.value,
               isActive: inputActive.checked
             };
+
+            // se senha tiver valor, verifica, senao nao envia ela
   
             fetch(`${url}/${idUrl}`, {
               method: 'PUT',
-              headers: { 'Content-Type': 'application/json' },
+              headers: {
+                'Accept': 'Application/Json',
+                'Content-Type': 'application/json',
+                'Authorization': JSON.parse(localStorage.getItem('auth'))
+              },
               body: JSON.stringify(data)
             })
             .then(function(response) {
               return response.json()
             })
             .then(function(response) {
-              console.log(response);
+              if(response.id){
+                setSuccess('Usuário atualizado com sucesso');
+              }
+
+              if(response.errors) {
+                console.log(JSON.stringify(response.errors))
+              }
             })
   
-            setSuccess('Usuário atualizado com sucesso');  // REFATORAR - SUCESSO SOMENTE SE RETORNAR 200 DO BACKEND
           }
     });
 
@@ -134,7 +149,11 @@ if (idUrl != undefined) {
   
             fetch(url, {
               method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
+              headers: {
+                'Accept': 'Application/Json',
+                'Content-Type': 'application/json',
+                'Authorization': JSON.parse(localStorage.getItem('auth'))
+              },
               body: JSON.stringify(data)
             })
             .then(function(response) {
@@ -143,8 +162,10 @@ if (idUrl != undefined) {
             .then(function(response) {
               if(response.id){
                 setSuccess('Usuário cadastrado com sucesso');
-              } else {
-                // setError()
+              } 
+              
+              if(response.errors) {
+                console.log(JSON.stringify(response.errors))
               }
             })
           }
@@ -283,7 +304,15 @@ function setSuccess(message) {
 
 function getUser(id) {
   
-  fetch(`${url}/${id}`)
+  const options = {
+    'headers': {
+      'Accept': 'Application/Json',
+      'Content-Type': 'Application/Json',
+      'Authorization': JSON.parse(localStorage.getItem('auth'))
+    }
+  }
+
+  fetch(`${url}/${id}`, options)
     .then(response => {
       return response.json();
     })

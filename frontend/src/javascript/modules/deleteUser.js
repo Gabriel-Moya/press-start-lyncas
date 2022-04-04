@@ -9,10 +9,22 @@ export default window.deleteUser = async function(id) {
   if (confirmDelete) {
     await fetch(`${url}/${id}`, {
       method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' }
+      headers: {
+        'Accept': 'Application/Json',
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('auth')
+      }
     })
-  }
+    .then(function(response) {
+      response.json();
+      console.log(id, localStorage.getItem('id'))
+      if(id == localStorage.getItem('id')) {
+        localStorage.clear();
+        location.href='/frontend/src/login.html';
+      }
+    });
 
-  listUsers();
+    listUsers();
+  }
 
 }

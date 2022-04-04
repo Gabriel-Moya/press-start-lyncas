@@ -26,11 +26,11 @@ function login() {
     }
 
     if(response.email) {
-      window.localStorage.setItem('id', JSON.stringify(`${response.id}`));
-      window.localStorage.setItem('fullname', JSON.stringify(`${response.name} ${response.lastname}`));
-      window.localStorage.setItem('email', JSON.stringify(`${response.email}`));
+      window.localStorage.setItem('id', response.id);
+      window.localStorage.setItem('fullname', `${response.name} ${response.lastname}`);
+      window.localStorage.setItem('email', response.email);
       const auth = btoa(`${response.email}:${password.value}`);
-      window.localStorage.setItem('auth', JSON.stringify(`Basic ${auth}`));
+      window.localStorage.setItem('auth', `Basic ${auth}`);
 
       window.location.href="/frontend/src/dashboard.html";
     }

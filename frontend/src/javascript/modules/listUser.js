@@ -6,7 +6,7 @@ const options = {
   'headers': {
     'Accept': 'Application/Json',
     'Content-Type': 'Application/Json',
-    'Authorization': JSON.parse(localStorage.getItem('auth'))
+    'Authorization': localStorage.getItem('auth')
   }
 }
 

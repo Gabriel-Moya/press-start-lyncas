@@ -75,6 +75,12 @@ export default function updateUser() {
                   localStorage.setItem('fullname', `${data.name} ${data.lastname}`);
                 }
 
+                if (inputPassword.value != "" && inputPassword.value != null) {
+                  if (idUrl == localStorage.getItem('id')) {
+                    localStorage.clear();
+                  }
+                }
+
                 setTimeout(() => {
                   location.href="/frontend/src/listing.html";
                 }, 1000);

@@ -74,6 +74,13 @@ export default function registerUser() {
                   inputActive.checked = false;
 
                   clearInfo(form);
+                  clearInfo(inputName)
+                  clearInfo(inputLastname)
+                  clearInfo(inputPhonenumber)
+                  clearInfo(inputBirthday)
+                  clearInfo(inputEmail)
+                  clearInfo(inputPassword)
+                  clearInfo(inputRetypePassword)
                 }, 2000);
 
               } else {

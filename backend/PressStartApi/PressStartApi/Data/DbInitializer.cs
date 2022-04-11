@@ -17,17 +17,17 @@ namespace PressStartApi.Data
                 new User()
                 {
                     Id = 1,
-                    Name = "admin",
-                    Lastname = "admin",
-                    Email = "admin@lyncas.net",
-                    Phone = "67998456580",
+                    Name = "Root",
+                    Lastname = "Lyncas",
+                    Email = "root@lyncas.net",
+                    Phone = "47999998888",
                     BirthDate = DateTime.Now,
                 });
             _modelBuilder.Entity<Authentication>().HasData(
                 new Authentication()
                 {
                     Id = 1,
-                    Password = "lyncas123",
+                    Password = "1d123173e5522fb682fe5b0aedd5fd9ea5c2769ff738991c08c10f79f80e9c50",
                     IsActive = true,
                     UserId = 1,
                 });

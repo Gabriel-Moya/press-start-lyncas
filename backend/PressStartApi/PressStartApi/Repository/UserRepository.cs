@@ -23,6 +23,14 @@ namespace PressStartApi.Repository
             return users;
         }
 
+        public async Task<User?> GetByEmail(string email)
+        {
+            User? user = await _context.Set<User>()
+                                .Include(x => x.Authentication)
+                                .SingleOrDefaultAsync(x => x.Email == email);
+            return user;
+        }
+
         public async Task<User> GetById(int id)
         {
             User user = await _context.Set<User>()

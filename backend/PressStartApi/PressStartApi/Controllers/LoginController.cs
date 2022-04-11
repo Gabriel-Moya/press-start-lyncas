@@ -1,10 +1,7 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using PressStartApi.DTO.Request;
 using PressStartApi.DTO.Response;
 using PressStartApi.Interfaces;
-using PressStartApi.Models;
 
 namespace PressStartApi.Controllers
 {

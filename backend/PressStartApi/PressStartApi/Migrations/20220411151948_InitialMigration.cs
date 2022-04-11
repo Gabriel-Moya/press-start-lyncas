@@ -47,6 +47,16 @@ namespace PressStartApi.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "User",
+                columns: new[] { "Id", "BirthDate", "Email", "Lastname", "Name", "Phone" },
+                values: new object[] { 1, new DateTime(2022, 4, 11, 12, 19, 48, 51, DateTimeKind.Local).AddTicks(3224), "root@lyncas.net", "Lyncas", "Root", "47999998888" });
+
+            migrationBuilder.InsertData(
+                table: "Authentication",
+                columns: new[] { "Id", "IsActive", "Password", "UserId" },
+                values: new object[] { 1, true, "1d123173e5522fb682fe5b0aedd5fd9ea5c2769ff738991c08c10f79f80e9c50", 1 });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Authentication_UserId",
                 table: "Authentication",

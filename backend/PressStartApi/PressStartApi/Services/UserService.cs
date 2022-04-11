@@ -5,6 +5,7 @@ using PressStartApi.DTO.Response;
 using PressStartApi.Interfaces;
 using PressStartApi.Models;
 using System.Text.RegularExpressions;
+using PressStartApi.Functions;
 
 namespace PressStartApi.Services
 {
@@ -31,10 +32,19 @@ namespace PressStartApi.Services
             return usersResponse;
         }
 
+        public async Task<User> GetByEmail(string email)
+        {
+            User? user = await _userRepository.GetByEmail(email);
+
+            if (user is null)
+                throw new BadHttpRequestException("Não autorizado", 401);
+
+            return user;
+        }
+
         public async Task<UserResponseDTO> GetById(int id)
         {
             User user = await _userRepository.GetById(id);
-
             UserResponseDTO userResponse = _mapper.Map<UserResponseDTO>(user);
 
             if (userResponse == null)
@@ -47,6 +57,7 @@ namespace PressStartApi.Services
         {
             string phoneReplaced = Regex.Replace(user.Phone, @"\D", "");
             user.Phone = phoneReplaced;
+            user.Password = HashPassword.HashingPassword(user.Password);
 
             User _user = _mapper.Map<User>(user);
 
@@ -64,6 +75,11 @@ namespace PressStartApi.Services
             if (user.Password == null || user.Password == "")
             {
                 user.Password = dbUser.Authentication.Password;
+            }
+
+            if (user.Password != null && user.Password != "")
+            {
+                user.Password = HashPassword.HashingPassword(user.Password);
             }
 
             string phoneReplaced = Regex.Replace(user.Phone, @"\D", "");

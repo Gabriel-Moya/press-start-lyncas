@@ -52,7 +52,7 @@ namespace PressStartApi.Migrations
                         {
                             Id = 1,
                             IsActive = true,
-                            Password = "lyncas123",
+                            Password = "1d123173e5522fb682fe5b0aedd5fd9ea5c2769ff738991c08c10f79f80e9c50",
                             UserId = 1
                         });
                 });
@@ -95,11 +95,11 @@ namespace PressStartApi.Migrations
                         new
                         {
                             Id = 1,
-                            BirthDate = new DateTime(2022, 4, 1, 11, 0, 47, 588, DateTimeKind.Local).AddTicks(3347),
-                            Email = "admin@lyncas.net",
-                            Lastname = "admin",
-                            Name = "admin",
-                            Phone = "67998456580"
+                            BirthDate = new DateTime(2022, 4, 11, 12, 19, 48, 51, DateTimeKind.Local).AddTicks(3224),
+                            Email = "root@lyncas.net",
+                            Lastname = "Lyncas",
+                            Name = "Root",
+                            Phone = "47999998888"
                         });
                 });
 

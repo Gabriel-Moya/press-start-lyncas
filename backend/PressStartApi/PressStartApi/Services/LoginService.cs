@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using PressStartApi.DTO.Request;
 using PressStartApi.DTO.Response;
+using PressStartApi.Functions;
 using PressStartApi.Interfaces;
 using PressStartApi.Models;
 
@@ -8,25 +9,26 @@ namespace PressStartApi.Services
 {
     public class LoginService : ILoginService
     {
-        private readonly ILoginRepository _loginRepository;
+        private readonly IUserService _userService;
         private readonly IMapper _mapper;
 
-        public LoginService(ILoginRepository loginRepository, IMapper mapper)
+        public LoginService(IUserService userService, IMapper mapper)
         {
-            _loginRepository = loginRepository;
+            _userService = userService;
             _mapper = mapper;
         }
 
         public async Task<UserResponseDTO> Login(LoginDTO loginDTO)
         {
-            User userLogin = await _loginRepository.Login(loginDTO);
+            User user = await _userService.GetByEmail(loginDTO.Email);
+            string hashedPassword = HashPassword.HashingPassword(loginDTO.Password);
 
-            if(userLogin == null)
+            if (hashedPassword == user.Authentication.Password)
             {
-                throw new BadHttpRequestException("Credenciais inválidas", 401);
+                return _mapper.Map<UserResponseDTO>(user);
             }
 
-            return _mapper.Map<UserResponseDTO>(userLogin);
+            throw new BadHttpRequestException("Credenciais inválidas", 401);
         }
     }
 }

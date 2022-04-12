@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PressStartApi.Data;
 
@@ -11,9 +12,10 @@ using PressStartApi.Data;
 namespace PressStartApi.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220329200811_InitialMigration")]
+    partial class InitialMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,15 +48,6 @@ namespace PressStartApi.Migrations
                         .IsUnique();
 
                     b.ToTable("Authentication", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            IsActive = true,
-                            Password = "lyncas123",
-                            UserId = 1
-                        });
                 });
 
             modelBuilder.Entity("PressStartApi.Models.User", b =>
@@ -90,17 +83,6 @@ namespace PressStartApi.Migrations
                         .IsUnique();
 
                     b.ToTable("User", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            BirthDate = new DateTime(2022, 4, 1, 11, 0, 47, 588, DateTimeKind.Local).AddTicks(3347),
-                            Email = "admin@lyncas.net",
-                            Lastname = "admin",
-                            Name = "admin",
-                            Phone = "67998456580"
-                        });
                 });
 
             modelBuilder.Entity("PressStartApi.Models.Authentication", b =>

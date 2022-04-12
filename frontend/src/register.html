@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/dashboard.css">
   <link rel="stylesheet" href="css/register.css">
+  <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
   <title>Cadastro de usuários | Lyncas</title>
 </head>
 
@@ -58,7 +59,7 @@
           <img src="images/user-300x300.png" alt="Foto do usuário">
 
           <div class="user-information">
-            <p>Gabriel Moya</p>
+            <p class="nameUser"></p>
             <a onclick="logout()" href="#">Sair</a>
           </div>
 
@@ -138,7 +139,8 @@
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <script type="module" src="./javascript/modules/logout.js"></script>
   <script type="module" src="./javascript/modules/verifyLogin.js"></script>
-  <script src="javascript/register.js"></script>
+  <script type="module" src="./javascript/modules/nameUserHeader.js"></script>
+  <script type="module" src="./javascript/register.js"></script>
   <script src="javascript/menuToggle.js"></script>
 </body>
 

@@ -1,6 +1,12 @@
 global using PressStartApi.Data;
 global using Microsoft.EntityFrameworkCore;
 using PressStartApi.Mapping;
+using PressStartApi.Middleware;
+using FluentValidation.AspNetCore;
+using PressStartApi.Validators;
+using PressStartApi.Interfaces;
+using PressStartApi.Services;
+using PressStartApi.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,9 +14,16 @@ builder.Services.AddMvc(options =>
 {
     options.SuppressAsyncSuffixInActionNames = false;
 });
+
 // Add services to the container.
+builder.Services.AddScoped<ILoginService, LoginService>();
+builder.Services.AddScoped<ILoginRepository, LoginRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IAuthenticateService, AuthenticateService>();
 
 builder.Services.AddCors();
+builder.Services.AddAuthentication();
 
 builder.Services.AddDbContext<DataContext>(options =>
 {
@@ -20,7 +33,8 @@ builder.Services.AddDbContext<DataContext>(options =>
 builder.Services.AddControllers().AddNewtonsoftJson(options =>
 {
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-});
+}).AddFluentValidation(p => p.RegisterValidatorsFromAssemblyContaining<ValidatorUser>())
+.AddFluentValidation(p => p.RegisterValidatorsFromAssemblyContaining<ValidatorUpdateUser>());
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
@@ -51,8 +65,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
+app.UseMiddleware<BasicAuthMiddleware>().UseMiddleware<ErrorMiddleware>();
 
 app.MapControllers();
+app.UseAuthorization();
+app.UseAuthentication();
 
 app.Run();

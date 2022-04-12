@@ -51,17 +51,3 @@ const screenSize = function() {
 }
 
 document.addEventListener('DOMContentLoaded', screenSize, false);
-
-/* function sidebarSize(screenSize) {
-  if (screenSize.matches) {
-    sidebar.style.display = "none"
-    container.style.width = "100%";
-  } else {
-    sidebar.style.display = "block"
-    container.style.width = "calc(100% - 300px)";
-  }
-} */
-
-/* var screenSize = window.matchMedia("(max-width: 801px)");
-sidebarSize(screenSize);
-screenSize.addListener(sidebarSize); */

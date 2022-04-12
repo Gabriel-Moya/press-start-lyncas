@@ -21,16 +21,16 @@ function login() {
     return response.json();
   })
   .then(function(response) {
-    console.log(response);
-    if(response.message) {
-      errorLogin(response.message);
+    if(response.Message) {
+      errorLogin(response.Message);
     }
 
     if(response.email) {
-      window.localStorage.setItem('id', JSON.stringify(`${response.id}`));
-      window.localStorage.setItem('fullname', JSON.stringify(`${response.name} ${response.lastname}`));
-      window.localStorage.setItem('email', JSON.stringify(`${response.email}`));
-      window.localStorage.setItem('auth', JSON.stringify(btoa(`${response.email}:${response.password}`)));
+      window.localStorage.setItem('id', response.id);
+      window.localStorage.setItem('fullname', `${response.name} ${response.lastname}`);
+      window.localStorage.setItem('email', response.email);
+      const auth = btoa(`${response.email}:${password.value}`);
+      window.localStorage.setItem('auth', `Basic ${auth}`);
 
       window.location.href="/frontend/src/dashboard.html";
     }

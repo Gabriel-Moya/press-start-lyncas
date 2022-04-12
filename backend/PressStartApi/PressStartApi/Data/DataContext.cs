@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using PressStartApi.Models;
+﻿using PressStartApi.Models;
 
 namespace PressStartApi.Data
 {
@@ -39,6 +38,8 @@ namespace PressStartApi.Data
                         .HasForeignKey<Authentication>(x => x.UserId);
                  }
             );
+
+            new DbInitializer(builder).seed();
         }
     }
 }

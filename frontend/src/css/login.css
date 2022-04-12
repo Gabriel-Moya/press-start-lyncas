@@ -79,6 +79,19 @@ input:hover[type="submit"] {
   opacity: 0.8;
 }
 
+.error {
+  font-family: "MerriweatherSans";
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  border-radius: 5px;
+  border: 2px solid #FF8C00;
+  background-color: rgba(255, 140, 0, 0.5);
+  color: #e0403a;
+  font-size: 21px;
+  margin: 0px 20px 40px 20px;
+}
+
 @media (max-width: 700px) {
   img {
     width: 200px;

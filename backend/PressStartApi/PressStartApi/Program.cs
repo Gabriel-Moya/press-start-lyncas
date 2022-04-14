@@ -17,11 +17,8 @@ builder.Services.AddMvc(options =>
 
 // Add services to the container.
 builder.Services.AddScoped<ILoginService, LoginService>();
-builder.Services.AddScoped<ILoginRepository, LoginRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IAuthenticateService, AuthenticateService>();
-
 builder.Services.AddCors();
 builder.Services.AddAuthentication();
 

@@ -13,7 +13,7 @@ namespace PressStartApi.Middleware
             _next = next;
         }
 
-        public async Task Invoke(HttpContext context, IAuthenticateService authenticateService)
+        public async Task Invoke(HttpContext context, ILoginService loginService)
         {
             try
             {
@@ -25,7 +25,7 @@ namespace PressStartApi.Middleware
 
                 // authenticate credentials with user service and attach user to http context
                 DTO.Request.LoginDTO loginDTO = new DTO.Request.LoginDTO { Email = email, Password = password };
-                context.Items["User"] = await authenticateService.Authenticate(loginDTO);
+                context.Items["User"] = await loginService.Login(loginDTO);
             }
             catch
             {

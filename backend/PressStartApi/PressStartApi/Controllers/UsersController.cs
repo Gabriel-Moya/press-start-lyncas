@@ -1,7 +1,5 @@
 ﻿using ApiLyncas.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using PressStartApi.DTO;
-using PressStartApi.DTO.Request;
 using PressStartApi.DTO.Response;
 using PressStartApi.Interfaces;
 using PressStartApi.Models;
@@ -33,13 +31,13 @@ namespace PressStartApi.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<UserResponseDTO>> AddUser(InsertUserDTO user)
+        public async Task<ActionResult<UserResponseDTO>> AddUser(DTO.Request.SendUserDTO user)
         {
             return Ok(await _userService.AddUser(user));
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<List<UpdateUserDTO>>> UpdateUser(int id, UpdateUserDTO request)
+        public async Task<ActionResult<List<DTO.Request.SendUserDTO>>> UpdateUser(int id, DTO.Request.SendUserDTO request)
         {
             return Ok(await _userService.UpdateUser(id, request));
         }

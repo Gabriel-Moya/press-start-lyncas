@@ -1,6 +1,6 @@
 ﻿namespace PressStartApi.DTO.Request
 {
-    public class UpdateUserDTO
+    public class SendUserDTO
     {
         public string Name { get; set; } = String.Empty;
         public string Lastname { get; set; } = String.Empty;

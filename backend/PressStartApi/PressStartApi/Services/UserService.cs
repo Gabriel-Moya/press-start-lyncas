@@ -1,6 +1,4 @@
 ﻿using AutoMapper;
-using PressStartApi.DTO;
-using PressStartApi.DTO.Request;
 using PressStartApi.DTO.Response;
 using PressStartApi.Interfaces;
 using PressStartApi.Models;
@@ -53,7 +51,7 @@ namespace PressStartApi.Services
             return userResponse;
         }
 
-        public async Task<UserResponseDTO> AddUser(InsertUserDTO user)
+        public async Task<UserResponseDTO> AddUser(DTO.Request.SendUserDTO user)
         {
             string phoneReplaced = Regex.Replace(user.Phone, @"\D", "");
             user.Phone = phoneReplaced;
@@ -65,7 +63,7 @@ namespace PressStartApi.Services
             return _mapper.Map<UserResponseDTO>(_user);
         }
 
-        public async Task<UserResponseDTO> UpdateUser(int id, UpdateUserDTO user)
+        public async Task<UserResponseDTO> UpdateUser(int id, DTO.Request.SendUserDTO user)
         {
             User dbUser = await _userRepository.GetById(id);
 

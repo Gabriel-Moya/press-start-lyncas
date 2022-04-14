@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using PressStartApi.Interfaces;
+﻿using PressStartApi.Interfaces;
 using PressStartApi.Models;
 
 namespace PressStartApi.Repository

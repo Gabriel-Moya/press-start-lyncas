@@ -1,6 +1,4 @@
-﻿using PressStartApi.DTO;
-using PressStartApi.DTO.Request;
-using PressStartApi.DTO.Response;
+﻿using PressStartApi.DTO.Response;
 using PressStartApi.Models;
 
 namespace PressStartApi.Interfaces
@@ -10,8 +8,8 @@ namespace PressStartApi.Interfaces
         Task<IEnumerable<UserResponseDTO>> Get();
         Task<User> GetByEmail(string email);
         Task<UserResponseDTO> GetById(int id);
-        Task<UserResponseDTO> AddUser(InsertUserDTO user);
-        Task<UserResponseDTO> UpdateUser(int id, UpdateUserDTO user);
+        Task<UserResponseDTO> AddUser(DTO.Request.SendUserDTO user);
+        Task<UserResponseDTO> UpdateUser(int id, DTO.Request.SendUserDTO user);
         Task DeleteUser(int id);
     }
 }

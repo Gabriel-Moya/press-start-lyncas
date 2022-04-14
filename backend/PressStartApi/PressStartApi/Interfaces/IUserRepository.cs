@@ -1,5 +1,4 @@
-﻿using PressStartApi.DTO.Response;
-using PressStartApi.Models;
+﻿using PressStartApi.Models;
 
 namespace PressStartApi.Interfaces
 {

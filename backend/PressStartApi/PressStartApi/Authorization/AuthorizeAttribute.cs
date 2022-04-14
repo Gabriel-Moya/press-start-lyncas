@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using PressStartApi.DTO.Request;
+using PressStartApi.DTO.Response;
 
 namespace ApiLyncas.Authorization
 {
@@ -15,7 +15,7 @@ namespace ApiLyncas.Authorization
             if (allowAnonymous)
                 return;
 
-            var user = (LoginDTO)context.HttpContext.Items["User"];
+            var user = (UserResponseDTO)context.HttpContext.Items["User"];
             if (user == null)
             {
                 context.Result = new JsonResult(new { message = "Autorização negada" }) { StatusCode = StatusCodes.Status401Unauthorized };

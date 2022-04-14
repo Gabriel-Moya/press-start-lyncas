@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using PressStartApi.DTO;
 using PressStartApi.DTO.Request;
 using PressStartApi.DTO.Response;
 using PressStartApi.Models;
@@ -10,18 +9,18 @@ namespace PressStartApi.Mapping
     {
         public MappingProfile()
         {
-            CreateMap<User, InsertUserDTO>()
+            CreateMap<User, DTO.Request.SendUserDTO>()
                 .ForMember(x => x.IsActive, x => x.MapFrom(x => x.Authentication.IsActive))
-                .ForMember(x => x.Password, x => x.MapFrom(x => x.Authentication.Password))
+                .ForMember<string>(x => x.Password, x => x.MapFrom<string>(x => x.Authentication.Password))
                 .ReverseMap();
 
             CreateMap<User, UserResponseDTO>()
                 .ForMember(x => x.IsActive, x => x.MapFrom(x => x.Authentication.IsActive))
                 .ReverseMap();
 
-            CreateMap<User, UpdateUserDTO>()
+            CreateMap<User, DTO.Request.SendUserDTO>()
                 .ForMember(x => x.IsActive, x => x.MapFrom(x => x.Authentication.IsActive))
-                .ForMember(x => x.Password, x => x.MapFrom(x => x.Authentication.Password))
+                .ForMember<string>(x => x.Password, x => x.MapFrom<string>(x => x.Authentication.Password))
                 .ReverseMap();
 
             CreateMap<UserResponseDTO, LoginDTO>()

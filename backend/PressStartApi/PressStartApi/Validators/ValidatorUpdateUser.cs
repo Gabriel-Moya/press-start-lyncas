@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace PressStartApi.Validators
 {
-    public class ValidatorUpdateUser : AbstractValidator<UpdateUserDTO>
+    public class ValidatorUpdateUser : AbstractValidator<SendUserDTO>
     {
         public ValidatorUpdateUser()
         {

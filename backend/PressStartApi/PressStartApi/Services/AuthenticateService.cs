@@ -25,11 +25,5 @@ namespace PressStartApi.Services
 
             return _mapper.Map<LoginDTO>(user);
         }
-
-        public async Task<IEnumerable<LoginDTO>> Get()
-        {
-            IEnumerable<UserResponseDTO> teste = await _authService.Get();
-            return _mapper.Map<IEnumerable<LoginDTO>>(teste);
-        }
     }
 }
